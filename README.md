@@ -7,7 +7,7 @@ Solutions do not pretend to be absolutely correct. They are all accepted by leet
 
 You can, if you want, add your own solutions or improve mine. If you offer a fundamentally different solution, it is better to add it to a separate class (may be extract base interface), if you just optimize my solution, you can edit it and request me to merge your editions.
 
-All solutions are equipped with tests implemented on JUnit4.
+To code I use Java 8. All solutions are equipped with tests implemented on JUnit4.
 
 To build and run tests, I use Maven.
 
