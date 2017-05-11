@@ -14,3 +14,7 @@ To build and run tests, I use Maven.
 You can freely use the repository to study algorithms. I also recommend you to register on leetcode.com.
 
 Good luck!
+
+**P.S.** Many of my solutions look too monstrous. This is because I am striving for more optimized algorithms. For example, I do not create new instances of StringBuilder if I can just use setLength(0). I don't delete and don't insert elements in arrays (in StringBuilders also) - this will lead to need to shift part of array elements. I initialize collections and builders capacity if I can calculate it. And so on.
+
+**P.P.S.** It is a good idea to post many versions of solution - optimized but ugly and not optimized but clear.
