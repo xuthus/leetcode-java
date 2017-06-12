@@ -4,6 +4,11 @@ package ru.elcoder.leetcode;
  * Created by xuthus on 01.05.2017.
  */
 public class IntegerToRomanSolution {
+    /*
+    Given an integer, convert it to a roman numeral.
+    Input is guaranteed to be within the range from 1 to 3999.
+    https://leetcode.com/problems/integer-to-roman/
+    */
     private static final char[] ROMAN_DIGITS = new char[]{'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 
     public String intToRoman(int num) {

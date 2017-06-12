@@ -6,6 +6,12 @@ import ru.elcoder.leetcode.models.ListNode;
  * Created by xuthus on 01.05.2017.
  */
 public class ReverseLinkedListSolution {
+    /*
+    Reverse a singly linked list.
+    Hint:
+    A linked list can be reversed either iteratively or recursively. Could you implement both?
+    https://leetcode.com/problems/reverse-linked-list/
+    */
 
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null)
