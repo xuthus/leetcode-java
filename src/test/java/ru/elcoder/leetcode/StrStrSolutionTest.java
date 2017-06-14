@@ -10,10 +10,25 @@ import static org.junit.Assert.assertEquals;
 public class StrStrSolutionTest {
 
     @Test
-    public void testStrStr() throws Exception {
+    public void testStrStrNaive() throws Exception {
         StrStrSolution solution = new StrStrSolution();
+        commonTestCases(solution);
+    }
 
+    @Test
+    public void testStrStrHorspool() throws Exception {
+        StrStrSolution solution = new StrStrSolution();
+        solution.algorithm = StrStrSolution.StringSearchAlgorithm.HORSPOOL;
+        commonTestCases(solution);
+    }
+
+    private void commonTestCases(StrStrSolution solution) {
         assertEquals(-1, solution.strStr("h", "hello"));
+        assertEquals(3, solution.strStr("abcdef", "def"));
+        assertEquals(5, solution.strStr("abcdedef", "def"));
+        assertEquals(7, solution.strStr("abcdededef", "def"));
+        assertEquals(7, solution.strStr("abcdeeedef", "def"));
+        assertEquals(-1, solution.strStr("abcdeeedef", "defa"));
         assertEquals(0, solution.strStr("hello", "hello"));
         assertEquals(0, solution.strStr("hello2", "hello"));
         assertEquals(5, solution.strStr("hello2", "2"));
