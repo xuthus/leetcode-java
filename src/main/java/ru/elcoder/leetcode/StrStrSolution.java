@@ -53,8 +53,8 @@ public class StrStrSolution {
         char[] hc = haystack.toCharArray();
         char[] nc = needle.toCharArray();
         int[] shifts = new int[256];   // only ASCII symbols!
-        for (int i = 0; i < nc.length - 1; i++) {
-            shifts[nc[i]] = i + 1;
+        for (int i = 0; i < nc.length - 1; i++) { // skip last character
+            shifts[nc[i]] = nc.length - (i + 1);
         }
         int maxPos = hc.length - nc.length;
         int ncLen = nc.length - 1;
@@ -62,7 +62,7 @@ public class StrStrSolution {
             for (int j = ncLen; j >= 0; j--) {
                 char c = hc[i + j];
                 if (c != nc[j]) {
-                    i = i + (nc.length - shifts[c]);
+                    i = i + (shifts[c] == 0 ? nc.length : shifts[c]);
                     break;
                 }
                 if (j == 0)
