@@ -11,8 +11,8 @@ import java.util.List;
  * Created by xuthus on 30.06.2017.
  */
 @Difficulty(DifficultyLevel.Easy)
-@BeatsPercent(64.62)
-public class RepeatedSubstringPatternSolution {
+@BeatsPercent(84.76)
+public class RepeatedSubstringPatternOptimizedSolution {
     /*
     Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.
 
@@ -33,13 +33,22 @@ public class RepeatedSubstringPatternSolution {
     https://leetcode.com/problems/repeated-substring-pattern/
      */
 
+    // will change len calculations -
+    // from n = 2 to s.length while n < minPrevFoundDivisor do
+    //     if (s.length % n == 0) {
+    //         len = s.len / n;
+    //         ...
     public boolean repeatedSubstringPattern(String s) {
         if (s == null || s.length() <= 1) return false;
 
+        int length = s.length();
         List<Integer> divisors = new LinkedList<>();
+        int minLen = length;
         nextLen:
-        for (int len = s.length() / 2; len >= 1; len--)
-            if ((s.length() % len) == 0) {
+        for (int i = 2; i <= minLen; i++) {
+            if (length % i == 0) {
+                int len = length / i;
+                minLen = len;
                 for (Integer divisor : divisors) {
                     if (divisor % len == 0)
                         continue nextLen;
@@ -48,6 +57,7 @@ public class RepeatedSubstringPatternSolution {
                     return true;
                 divisors.add(len);
             }
+        }
         return false;
     }
 
