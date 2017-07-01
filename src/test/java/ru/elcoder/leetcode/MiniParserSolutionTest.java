@@ -2,6 +2,7 @@ package ru.elcoder.leetcode;
 
 import org.junit.Test;
 import ru.elcoder.leetcode.models.NestedInteger;
+import ru.elcoder.leetcode.timer.Timer;
 
 import java.util.List;
 
@@ -195,22 +196,25 @@ public class MiniParserSolutionTest {
 
     @Test
     public void deserializeLT() throws Exception {
-        final int LOOPS = 1; // 10000000;
+        final int LOOPS = 1; //10000000;
 
         MiniParserSolution solution = new MiniParserSolution();
         MiniParserOptimizedSolution optimizedSolution = new MiniParserOptimizedSolution();
 
-        long startAt = System.currentTimeMillis();
+        Timer timer = new Timer();
+        timer.start();
+        timer.start();
         for (int i = 0; i < LOOPS; i++) {
             optimizedSolution.deserialize("[123,[-456],[-789, 125, 126, [127,128,129],130,131,[132,133],134],135,136,[777]]");
         }
-        System.out.println("optimized deserialize() duration, ms: " + (System.currentTimeMillis() - startAt));
+        System.out.println("optimized deserialize() duration, ms: " + timer.finish());
 
-        startAt = System.currentTimeMillis();
+        timer.start();
         for (int i = 0; i < LOOPS; i++) {
             solution.deserialize("[123,[-456],[-789, 125, 126, [127,128,129],130,131,[132,133],134],135,136,[777]]");
         }
-        System.out.println("non-optimized deserialize() duration, ms: " + (System.currentTimeMillis() - startAt));
+        System.out.println("non-optimized deserialize() duration, ms: " + timer.finish());
+        System.out.println("total duration, ms: " + timer.finish());
     }
 
 }

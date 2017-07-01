@@ -1,6 +1,7 @@
 package ru.elcoder.leetcode.models;
 
 import org.junit.Test;
+import ru.elcoder.leetcode.timer.Timer;
 
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class BinarySearchTreeTest {
 
-    public static final int ARRAY_SIZE = 16000;
+    public static final int ARRAY_SIZE = 10; //16000;
 
     @Test
     public void testInsertAndCounts() {
@@ -22,11 +23,12 @@ public class BinarySearchTreeTest {
         for (int i = 0; i < nums.length; i++) {
             nums[i] = random.nextInt(10000);
         }
-        long startAt = System.currentTimeMillis();
+        Timer timer = new Timer();
+        timer.start();
         for (int i = 0; i < nums.length; i++) {
             tree.insert(nums[i]);
         }
-        System.out.println("Insert, ms: " + (System.currentTimeMillis() - startAt));
+        System.out.println("Insert, ms: " + timer.finish());
 
         for (int i = 0; i < 10000; i++) {
             int max = random.nextInt(10000);
