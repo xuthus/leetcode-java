@@ -25,7 +25,7 @@ public class ValidPerfectSquareSolution {
 
     public boolean isPerfectSquare(int num) {
         if (num < 2) return true; // special cases
-        int max = 46341; // magic number :) maximum integer that square less than Integer.MAX_VALUE
+        int max = 46341 > num ? num : 46341; // magic number :) maximum integer that square less than Integer.MAX_VALUE
         int min = 0;
         while (true) {
             int step = (max - min) >> 1;
