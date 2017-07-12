@@ -11,7 +11,7 @@ import java.util.Set;
  * Created by xuthus on 02.07.2017.
  */
 @Difficulty(DifficultyLevel.Easy)
-@BeatsPercent(Double.NaN) // Sorry. We do not have enough accepted submissions to show runtime distribution chart.
+@BeatsPercent(13.23)
 public class SumOfSquareNumbersSolution {
     /*
     Given a non-negative integer c, your task is to decide whether there're two integers a and b such that a2 + b2 = c.
