@@ -1,4 +1,7 @@
 # leetcode-java
+
+[![Build Status](https://travis-ci.org/xuthus/leetcode-java.svg?branch=master)](https://travis-ci.org/xuthus/leetcode-java)
+
 Leetcode solutions
 
 The repository contains solutions to algorithmic problems from leetcode.com. I prefer to use Java, but may be I will solve some problems in other languages.
