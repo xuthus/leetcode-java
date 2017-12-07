@@ -1,12 +1,13 @@
 package ru.elcoder.leetcode;
 
 
+import ru.elcoder.leetcode.models.BeatsPercent;
 import ru.elcoder.leetcode.models.Difficulty;
 import ru.elcoder.leetcode.models.DifficultyLevel;
 
 @Difficulty(DifficultyLevel.Hard)
+@BeatsPercent(46.34)
 public class WildcardMatchingSolution {
-
     /*
     Implement wildcard pattern matching with support for '?' and '*'.
 
@@ -33,7 +34,7 @@ public class WildcardMatchingSolution {
         return testSubMatch(s, true, p, true);
     }
 
-    private boolean testSubMatch(String s, boolean leftStrict, String mask, boolean rightStrict) {
+    public boolean testSubMatch(String s, boolean leftStrict, String mask, boolean rightStrict) {
         System.out.println("testSubMatch(), s: " + s + ", leftStrict: " + (leftStrict ? "Y" : "N") + ", mask: " + mask + ", rightStrict: " + (rightStrict ? "Y" : "N"));
         if (mask == null)
             return false;
@@ -65,8 +66,14 @@ public class WildcardMatchingSolution {
         if (leftStrict)
             return s.startsWith(leftToken) && testSubMatch(s.substring(leftToken.length()), true, mask.substring(leftToken.length()), rightStrict);
         if (rightStrict)
-            return s.endsWith(rightToken) && testSubMatch(s.substring(0, s.length() - leftToken.length()), leftStrict, mask.substring(0, mask.length() - rightToken.length()), true);
+            return s.endsWith(rightToken) && testSubMatch(s.substring(0, s.length() - rightToken.length()), leftStrict, mask.substring(0, mask.length() - rightToken.length()), true);
+
         // leftStrict == false && rightStrict == false
+        if (mask.indexOf('*') < 0 && mask.indexOf('?') >= 0) {
+            // случай bbb?ccc?ddd - ищем вхождение сканированием строки
+            return stringContainsMask(s, mask);
+        }
+
         int leftStart = s.indexOf(leftToken) + leftToken.length();
         if (leftStart < leftToken.length())
             return false;
@@ -75,6 +82,24 @@ public class WildcardMatchingSolution {
             return false;
         mask = mask.substring(leftToken.length(), mask.length() - rightToken.length());
         return testSubMatch(s.substring(leftStart, rightStart), true, mask, true);
+    }
+
+    // случай bbb?ccc?ddd - ищем вхождение сканированием строки
+    public boolean stringContainsMask(String s, String mask) {
+        System.out.println("stringContainsMask(): s: " + s + ", mask: " + mask);
+        char[] chars = s.toCharArray();
+        int lastPos = chars.length - mask.length() + 1;
+        for (int i = 0; i < lastPos; i++) {
+            boolean found = true;
+            for (int j = 0; j < mask.length(); j++) {
+                if (mask.charAt(j) != '?' && mask.charAt(j) != chars[i + j]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return true;
+        }
+        return false;
     }
 
     public String rightToken(String mask) {

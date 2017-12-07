@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 public class WildcardMatchingSolutionTest {
 
     @Test
-    public void isMatchDev() throws Exception {
+    public void isMatch() throws Exception {
 
         WildcardMatchingSolution solution = new WildcardMatchingSolution();
 
+        assertTrue(solution.isMatch("cXaXb", "c*a*b"));
         assertTrue(solution.isMatch("cXaXb", "*a*"));
         assertTrue(solution.isMatch("cXaXb", "*XaX*"));
         assertTrue(solution.isMatch("cXaX", "*XaX*"));
@@ -58,17 +59,7 @@ public class WildcardMatchingSolutionTest {
         assertTrue(solution.isMatch("aabab", "aa*ab"));
         assertTrue(solution.isMatch("aa-ab-ab", "aa*ab"));
         assertFalse(solution.isMatch("aa", "a"));
-        System.out.println("----------------------------");
-        assertTrue(solution.isMatch("abefcdgiescdfimde", "ab*cd?i*de"));
-    }
-
-    @Test
-    public void isMatch() throws Exception {
-
-        WildcardMatchingSolution solution = new WildcardMatchingSolution();
-
-        assertTrue(solution.isMatch("cXaXb", "c*a*b"));
-
+        assertTrue(solution.isMatch("xyssabc", "*a?c*"));
         assertFalse(solution.isMatch("", "?"));
         assertTrue(solution.isMatch("", "*"));
         assertFalse(solution.isMatch("aa", ""));
@@ -95,6 +86,16 @@ public class WildcardMatchingSolutionTest {
         assertTrue(solution.isMatch("aaab", "aa*ab"));
         assertTrue(solution.isMatch("aabab", "aa*ab"));
         assertTrue(solution.isMatch("aa-ab-ab", "aa*ab"));
+        // первый случай
+        assertTrue(solution.isMatch("xassabc", "*a?c*"));
+        assertTrue(solution.isMatch("cdgiescdfi", "*cd?i*"));
+        assertTrue(solution.isMatch("abefcdgiescdfimde", "ab*cd?i*de"));
+        // второй случай
+        assertTrue(solution.isMatch("-a-cc-", "*a?c*"));
+        assertFalse(solution.isMatch("bbaabbbabbbbabbbaaabababbbabbababbbabaaabbbbaabaabaaaa", "*b*b*a*abbaab*aba*"));
+        assertFalse(solution.isMatch("bbaabbbabbbbabbbaaabababbbabbababbbabaaabbbbaabaabaaaa", "*b**b*a**abbaab*aba***"));
+        System.out.println("----------------------------");
+        assertTrue(solution.isMatch("aaabbaabbaab", "*aabbaa*aab"));
     }
 
     @Test
@@ -124,4 +125,20 @@ public class WildcardMatchingSolutionTest {
         assertEquals("?", solution.rightToken("?"));
     }
 
+    @Test
+    public void testSubMatch() {
+        WildcardMatchingSolution solution = new WildcardMatchingSolution();
+
+        assertTrue(solution.testSubMatch("-a--a-c", false, "a?c", false));
+    }
+
+    @Test
+    public void stringContainsMask() {
+        WildcardMatchingSolution solution = new WildcardMatchingSolution();
+
+        assertTrue(solution.stringContainsMask("abcdef", "c?e"));
+        assertTrue(solution.stringContainsMask("abcde", "c?e"));
+        assertTrue(solution.stringContainsMask("acbcdef", "c?e"));
+        assertTrue(solution.stringContainsMask("cde", "c?e"));
+    }
 }
