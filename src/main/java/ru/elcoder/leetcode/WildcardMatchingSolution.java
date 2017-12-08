@@ -34,8 +34,8 @@ public class WildcardMatchingSolution {
         return testSubMatch(s, true, p, true);
     }
 
-    public boolean testSubMatch(String s, boolean leftStrict, String mask, boolean rightStrict) {
-        System.out.println("testSubMatch(), s: " + s + ", leftStrict: " + (leftStrict ? "Y" : "N") + ", mask: " + mask + ", rightStrict: " + (rightStrict ? "Y" : "N"));
+    boolean testSubMatch(String s, boolean leftStrict, String mask, boolean rightStrict) {
+//        System.out.println("testSubMatch(), s: " + s + ", leftStrict: " + (leftStrict ? "Y" : "N") + ", mask: " + mask + ", rightStrict: " + (rightStrict ? "Y" : "N"));
         if (mask == null)
             return false;
         if (mask.length() == 0) {
@@ -47,14 +47,13 @@ public class WildcardMatchingSolution {
         if (leftToken.equals("?"))
             return s.length() != 0 && testSubMatch(s.substring(1), leftStrict, mask.substring(1), rightStrict);
         if (leftToken.equals(mask)) {
-            boolean match = true;
-            if (leftStrict)
+            boolean match = s.contains(mask);
+            if (match && leftStrict)
                 match = match && s.startsWith(mask);
-            if (rightStrict)
+            if (match && rightStrict)
                 match = match && s.endsWith(mask);
-            if (leftStrict && rightStrict)
+            if (match && leftStrict && rightStrict)
                 match = match && s.equals(mask);
-            match = match && s.contains(mask);
             return match;
         }
         String rightToken = rightToken(mask);
@@ -85,8 +84,8 @@ public class WildcardMatchingSolution {
     }
 
     // случай bbb?ccc?ddd - ищем вхождение сканированием строки
-    public boolean stringContainsMask(String s, String mask) {
-        System.out.println("stringContainsMask(): s: " + s + ", mask: " + mask);
+    boolean stringContainsMask(String s, String mask) {
+//        System.out.println("stringContainsMask(): s: " + s + ", mask: " + mask);
         char[] chars = s.toCharArray();
         int lastPos = chars.length - mask.length() + 1;
         for (int i = 0; i < lastPos; i++) {
@@ -102,7 +101,7 @@ public class WildcardMatchingSolution {
         return false;
     }
 
-    public String rightToken(String mask) {
+    String rightToken(String mask) {
         for (int i = mask.length() - 1; i >= 0; i--) {
             char c = mask.charAt(i);
             if (c == '*' || c == '?') {
@@ -115,7 +114,7 @@ public class WildcardMatchingSolution {
         return mask;
     }
 
-    public String leftToken(String mask) {
+    String leftToken(String mask) {
         for (int i = 0; i < mask.length(); i++) {
             char c = mask.charAt(i);
             if (c == '*' || c == '?') {
