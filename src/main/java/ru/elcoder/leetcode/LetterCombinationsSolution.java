@@ -10,10 +10,9 @@ import java.util.List;
 /**
  * Created by xuthus on 09.12.2017.
  */
-// TODO: 09.12.2017 optimize
 @Difficulty(DifficultyLevel.Medium)
 @BeatsPercent(8.75)
-public class LetterCombinationsSolution {
+public class LetterCombinationsSolution implements LetterCombinations {
 
     /*
     Given a digit string, return all possible letter combinations that the number could represent.
@@ -29,6 +28,7 @@ public class LetterCombinationsSolution {
 
     https://leetcode.com/problems/letter-combinations-of-a-phone-number/
      */
+    @Override
     public List<String> letterCombinations(String digits) {
         final List<char[]> letters = new LinkedList<>();
         for (char c : digits.toCharArray()) {

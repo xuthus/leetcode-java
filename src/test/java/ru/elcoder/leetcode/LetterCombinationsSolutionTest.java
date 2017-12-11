@@ -15,8 +15,11 @@ public class LetterCombinationsSolutionTest {
 
     @Test
     public void letterCombinations() {
-        LetterCombinationsSolution solution = new LetterCombinationsSolution();
+        runTestCases(new LetterCombinationsSolution());
+        runTestCases(new LetterCombinationsOptimizedSolution());
+    }
 
+    private void runTestCases(LetterCombinations solution) {
         List<String> list = solution.letterCombinations("23");
         Collections.sort(list);
         assertEquals(9, list.size());
