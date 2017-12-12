@@ -20,7 +20,9 @@ public class RandomListNode {
             }
         }
         for (int i = 0; i < nodes.length; i++) {
-            nodes[i].random = nodes[listArray[i][1]];
+            if (listArray[i][1] >= 0) {
+                nodes[i].random = nodes[listArray[i][1]];
+            }
         }
         return nodes[0];
     }

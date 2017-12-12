@@ -17,9 +17,29 @@ public class CopyListWithRandomPointerSolutionTest {
                 {30, 0}
         };
         RandomListNode list = RandomListNode.fromArray(randomListArray);
-        RandomListNode copy = solution.copyRandomList(list);
+        RandomListNode copy = solution.copyRandomListOptimized(list);
         assertFalse(copy == list);
         int[][] copyArray = RandomListNode.toArray(copy);
+        assertArrayEquals(randomListArray, copyArray);
+
+        randomListArray = new int[][]{
+                {10, 1},  // second value is "random" index
+                {20, -1},
+                {30, 0}
+        };
+        list = RandomListNode.fromArray(randomListArray);
+        copy = solution.copyRandomListOptimized(list);
+        assertFalse(copy == list);
+        copyArray = RandomListNode.toArray(copy);
+        assertArrayEquals(randomListArray, copyArray);
+
+        randomListArray = new int[][]{
+                {10, -1}  // second value is "random" index
+        };
+        list = RandomListNode.fromArray(randomListArray);
+        copy = solution.copyRandomListOptimized(list);
+        assertFalse(copy == list);
+        copyArray = RandomListNode.toArray(copy);
         assertArrayEquals(randomListArray, copyArray);
     }
 
