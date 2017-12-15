@@ -22,11 +22,11 @@ public class CountSmallerNumbersSolutionTest {
 
         long startAt = System.currentTimeMillis();
         List<Integer> integers = solution.countSmallerEasyAndSlow(nums);
-        System.out.println("countSmallerEasyAndSlow(), ms: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("countSmallerEasyAndSlow(), ms: " + (System.currentTimeMillis() - startAt));
 
         startAt = System.currentTimeMillis();
         List<Integer> integers2 = solution.countSmallerWithBST(nums);
-        System.out.println("countSmallerWithBST(), ms: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("countSmallerWithBST(), ms: " + (System.currentTimeMillis() - startAt));
     }
 
     @Test

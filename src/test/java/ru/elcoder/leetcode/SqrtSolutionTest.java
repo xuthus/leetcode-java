@@ -42,10 +42,10 @@ public class SqrtSolutionTest {
         timer.start();
         for (int i = 0; i < LOOPS; i++)
             diffSolution.mySqrt(i);
-        System.out.println("diff sqrt duration, ms: " + timer.finish());
+//        System.out.println("diff sqrt duration, ms: " + timer.finish());
         timer.start();
         for (int i = 0; i < LOOPS; i++)
             divSolution.mySqrt(i);
-        System.out.println("div sqrt duration, ms: " + timer.finish());
+//        System.out.println("div sqrt duration, ms: " + timer.finish());
     }
 }

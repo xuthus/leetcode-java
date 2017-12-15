@@ -22,7 +22,7 @@ public class CountingBitsSolutionTest {
         for (int i = 0; i < LOOP_COUNT; i++) {
             solution.countBits(25678);
         }
-        System.out.println(timer.finish());
+//        System.out.println(timer.finish());
     }
 
     @Test

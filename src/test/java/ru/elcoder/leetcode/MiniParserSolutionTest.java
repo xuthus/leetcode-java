@@ -207,14 +207,14 @@ public class MiniParserSolutionTest {
         for (int i = 0; i < LOOPS; i++) {
             optimizedSolution.deserialize("[123,[-456],[-789, 125, 126, [127,128,129],130,131,[132,133],134],135,136,[777]]");
         }
-        System.out.println("optimized deserialize() duration, ms: " + timer.finish());
+//        System.out.println("optimized deserialize() duration, ms: " + timer.finish());
 
         timer.start();
         for (int i = 0; i < LOOPS; i++) {
             solution.deserialize("[123,[-456],[-789, 125, 126, [127,128,129],130,131,[132,133],134],135,136,[777]]");
         }
-        System.out.println("non-optimized deserialize() duration, ms: " + timer.finish());
-        System.out.println("total duration, ms: " + timer.finish());
+//        System.out.println("non-optimized deserialize() duration, ms: " + timer.finish());
+//        System.out.println("total duration, ms: " + timer.finish());
     }
 
 }

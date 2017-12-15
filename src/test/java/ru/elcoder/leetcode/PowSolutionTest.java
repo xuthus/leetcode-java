@@ -36,12 +36,12 @@ public class PowSolutionTest {
         for (int i = 0; i < LOOPS; i++)
             for (int j = 1; j < 100; j++)
                 solution.myPowLongs(1.1, j);
-        System.out.println("non-optimized pow() duration, ms: " + timer.finish());
+//        System.out.println("non-optimized pow() duration, ms: " + timer.finish());
         timer.start();
         for (int i = 0; i < LOOPS; i++)
             for (int j = 1; j < 100; j++)
                 solution.myPow(1.1, j);
-        System.out.println("optimized pow() duration, ms: " + timer.finish());
+//        System.out.println("optimized pow() duration, ms: " + timer.finish());
     }
 
 }

@@ -33,7 +33,7 @@ public class RepeatedSubstringPatternSolutionTest {
             assertTrue(solution.repeatedSubstringPattern("sergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergey"));
             assertFalse(solution.repeatedSubstringPattern("aba"));
         }
-        System.out.println("not optimized duration: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("not optimized duration: " + (System.currentTimeMillis() - startAt));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class RepeatedSubstringPatternSolutionTest {
             assertTrue(solution.repeatedSubstringPattern("sergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergeysergey"));
             assertFalse(solution.repeatedSubstringPattern("aba"));
         }
-        System.out.println("optimized duration: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("optimized duration: " + (System.currentTimeMillis() - startAt));
     }
 
 }

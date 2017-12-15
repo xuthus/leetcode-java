@@ -11,7 +11,7 @@ public class WildcardMatchingSolutionTest {
 
     @Test
     public void isMatch() throws Exception {
-        System.out.println("Warmup...");
+//        System.out.println("Warmup...");
         Thread.sleep(500);
         WildcardMatchingSolution solution = new WildcardMatchingSolution();
         applyTestCases(solution, WARMUP_LOOPS);
@@ -19,17 +19,17 @@ public class WildcardMatchingSolutionTest {
         solution = new WildcardMatchingOptimizationsSolution();
         applyTestCases(solution, WARMUP_LOOPS);
 
-        System.out.println("Not Optimized");
+//        System.out.println("Not Optimized");
         solution = new WildcardMatchingSolution();
         long startAt = System.currentTimeMillis();
         applyTestCases(solution, LOOPS);
-        System.out.println(System.currentTimeMillis() - startAt);
+//        System.out.println(System.currentTimeMillis() - startAt);
 
-        System.out.println("Optimized");
+//        System.out.println("Optimized");
         solution = new WildcardMatchingOptimizationsSolution();
         startAt = System.currentTimeMillis();
         applyTestCases(solution, LOOPS);
-        System.out.println(System.currentTimeMillis() - startAt);
+//        System.out.println(System.currentTimeMillis() - startAt);
     }
 
     private void applyTestCases(WildcardMatchingSolution solution, int loops) {

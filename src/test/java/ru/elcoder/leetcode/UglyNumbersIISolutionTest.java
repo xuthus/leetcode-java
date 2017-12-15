@@ -17,14 +17,14 @@ public class UglyNumbersIISolutionTest {
                 solution.nthUglyNumberOpt(i);
             }
         }
-        System.out.println("Optimized, ms: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("Optimized, ms: " + (System.currentTimeMillis() - startAt));
         startAt = System.currentTimeMillis();
         for (int k = 0; k < 10; k++) {
             for (int i = 1; i < 1690; i++) {
                 solution.nthUglyNumber(i);
             }
         }
-        System.out.println("Not optimized, ms: " + (System.currentTimeMillis() - startAt));
+//        System.out.println("Not optimized, ms: " + (System.currentTimeMillis() - startAt));
     }
 
     private static boolean isUglyNumber(int num) {

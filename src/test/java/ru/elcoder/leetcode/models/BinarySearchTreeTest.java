@@ -28,7 +28,7 @@ public class BinarySearchTreeTest {
         for (int i = 0; i < nums.length; i++) {
             tree.insert(nums[i]);
         }
-        System.out.println("Insert, ms: " + timer.finish());
+//        System.out.println("Insert, ms: " + timer.finish());
 
         for (int i = 0; i < 10000; i++) {
             int max = random.nextInt(10000);

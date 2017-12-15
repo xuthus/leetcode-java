@@ -6,8 +6,6 @@ import ru.elcoder.leetcode.models.DifficultyLevel;
 
 import java.util.Arrays;
 
-import static ru.elcoder.leetcode.utils.Utils.arrayOf;
-
 @Difficulty(DifficultyLevel.Medium)
 @BeatsPercent(43.15)
 public class Closest3SumSolution {
@@ -21,7 +19,7 @@ public class Closest3SumSolution {
             for (int n2 = n1 + 1; n2 < nums.length - 1; n2++) {
                 int num2 = nums[n2];
                 int num3 = findClosest(nums, n2 + 1, nums.length - 1, target - num1 - num2);
-                System.out.println(Arrays.toString(arrayOf(num1, num2, num3)));
+//                System.out.println(Arrays.toString(arrayOf(num1, num2, num3)));
                 int sum = num1 + num2 + num3;
                 if (Math.abs(target - sum) < diff) {
                     diff = Math.abs(target - sum);
