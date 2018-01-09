@@ -10,7 +10,7 @@ import static ru.elcoder.leetcode.utils.Utils.arrayOf;
 
 public class ReversePairsSolutionTest {
 
-    public static final int COUNTS = 40000;
+    public static final int COUNTS = 4; //40000;
 
     @Test
     public void reversePairs() throws Exception {
@@ -74,7 +74,8 @@ public class ReversePairsSolutionTest {
         ReversePairsSolution solution = new ReversePairsSolution();
 
         //compare naive and optimized
-        int[] nums = new int[50000];
+        int count = 50; //50000;
+        int[] nums = new int[count];
         for (int i = 0; i < nums.length; i++) {
             nums[i] = ThreadLocalRandom.current().nextInt(0, 10000);
         }
