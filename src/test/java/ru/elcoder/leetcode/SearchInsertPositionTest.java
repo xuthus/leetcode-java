@@ -36,4 +36,10 @@ public class SearchInsertPositionTest {
         final SearchInsertPositionSolution solution = new SearchInsertPositionSolution();
         assertEquals(0, solution.searchInsert(arrayOf(1), 0));
     }
+
+    @Test
+    public void border1() {
+        final SearchInsertPositionSolution solution = new SearchInsertPositionSolution();
+        assertEquals(0, solution.searchInsert(new int[0], 0));
+    }
 }

@@ -40,11 +40,24 @@ import ru.elcoder.leetcode.models.DifficultyLevel;
 @Difficulty(DifficultyLevel.Easy)
 public class SearchInsertPositionSolution {
     public int searchInsert(int[] nums, int target) {
-        int lo = 0;
-        int gr = nums.length - 1;
-        while (true) {
-
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
-        return 0;
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (true) {
+            if (target <= nums[lo]) {
+                return lo;
+            }
+            if (target > nums[hi]) {
+                return hi + 1;
+            }
+            int mid = (lo + hi) >> 1;
+            if (mid == lo || target < nums[mid]) {
+                hi = mid;
+            } else {
+                lo = mid;
+            }
+        }
     }
 }
