@@ -1,7 +1,5 @@
 package ru.elcoder.leetcode;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * Created by xuthus on 05.05.2017.
  */
@@ -27,7 +25,7 @@ public class StrStrSolution {
             case HORSPOOL:
                 return strStrUsingHorspool(haystack, needle);
             default:
-                throw new NotImplementedException();
+                throw new IllegalStateException("Not implemented");
         }
     }
 

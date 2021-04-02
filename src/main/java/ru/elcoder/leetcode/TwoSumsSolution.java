@@ -22,12 +22,7 @@ public class TwoSumsSolution {
         Integer[] indices = new Integer[nums.length];
         for (int i = 0; i < indices.length; i++)
             indices[i] = i;
-        Arrays.sort(indices, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return Integer.compare(nums[o1], nums[o2]);
-            }
-        });
+        Arrays.sort(indices, Comparator.comparingInt(i -> nums[i]));
 
         int upperIndex = nums.length - 1;
         int lowerIndex = 0;
