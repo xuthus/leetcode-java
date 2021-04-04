@@ -13,8 +13,8 @@ public class Utils {
         return strings;
     }
 
-    public static List<String> listOf(String... strings) {
-        return Arrays.asList(strings);
+    public static <T> List<T> listOf(T... items) {
+        return Arrays.asList(items);
     }
 
 }
