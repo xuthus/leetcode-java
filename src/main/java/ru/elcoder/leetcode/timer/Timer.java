@@ -15,4 +15,10 @@ public class Timer {
     public long finish() {
         return System.currentTimeMillis() - startAt.pop();
     }
+
+    public static void measure(String label, Runnable runnable) {
+        final long startTime = System.nanoTime();
+        runnable.run();
+        System.out.printf("%s, execution time: %s ns%n", label, System.nanoTime() - startTime);
+    }
 }
