@@ -19,6 +19,31 @@ import ru.elcoder.leetcode.models.Leetcode;
 )
 public class CanPlaceFlowersSolution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        return false; // TODO: 4/7/2021 implement
+        int gapStart = -1;
+        int count = 0;
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] != 0) {
+                if (gapStart >= 0) {
+                    int gapLen = i - gapStart;
+                    if (gapStart == 0) {
+                        gapLen++;
+                    }
+                    count += (gapLen - 1) >> 1;
+                }
+                gapStart = -1;
+            } else {
+                if (gapStart < 0) {
+                    gapStart = i;
+                }
+            }
+        }
+        if (gapStart >= 0) {
+            int gapLen = flowerbed.length - gapStart;
+            if (gapStart == 0) {
+                gapLen++;
+            }
+            count += gapLen >> 1;
+        }
+        return count >= n;
     }
 }
