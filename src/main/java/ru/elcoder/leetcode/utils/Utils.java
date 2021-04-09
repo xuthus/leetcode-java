@@ -17,4 +17,12 @@ public class Utils {
         return Arrays.asList(items);
     }
 
+    public static String repeatChar(char c, int len) {
+        final StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
 }
