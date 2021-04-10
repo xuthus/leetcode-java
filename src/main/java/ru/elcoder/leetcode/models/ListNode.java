@@ -59,4 +59,19 @@ public class ListNode {
         }
         return next.last();
     }
+
+    public ListNode makeLoop(int pos) {
+        final ListNode loopStart = nodeAt(pos);
+        this.last().next = loopStart;
+        return loopStart;
+    }
+
+    private ListNode nodeAt(int pos) {
+        ListNode p = this;
+        while (pos > 0) {
+            p = p.next;
+            pos--;
+        }
+        return p;
+    }
 }
