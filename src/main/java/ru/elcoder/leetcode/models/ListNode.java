@@ -9,6 +9,7 @@ package ru.elcoder.leetcode.models;
  */
 public class ListNode {
     public int val;
+
     public ListNode next;
 
     public ListNode(int x) {
@@ -50,5 +51,12 @@ public class ListNode {
     @Override
     public String toString() {
         return new StringBuilder("{val = ").append(val).append(", next = ").append(next == null ? "null" : next.val).append("}").toString();
+    }
+
+    public ListNode last() {
+        if (next == null) {
+            return this;
+        }
+        return next.last();
     }
 }
