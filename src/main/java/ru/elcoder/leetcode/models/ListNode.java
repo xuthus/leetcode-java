@@ -16,6 +16,11 @@ public class ListNode {
         val = x;
     }
 
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+
     public static ListNode fromArray(int... items) {
         ListNode head = null;
         ListNode parent = null;
