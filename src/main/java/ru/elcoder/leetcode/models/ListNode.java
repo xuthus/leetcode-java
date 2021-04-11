@@ -74,4 +74,8 @@ public class ListNode {
         }
         return p;
     }
+
+    public void append(ListNode tail) {
+        this.last().next = tail;
+    }
 }
