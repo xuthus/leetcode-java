@@ -4,11 +4,11 @@ package ru.elcoder.leetcode.models;
  * Created by xuthus on 13.05.2017.
  */
 public class BinarySearchTree {
-    private TreeNode root;
+    private TreeNode1 root;
 
     public void insert(int value) {
         if (root == null)
-            root = new TreeNode(value);
+            root = new TreeNode1(value);
         else
             root.insertIterative(value);
     }
