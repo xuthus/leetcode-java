@@ -23,4 +23,20 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof TreeNode)) {
+            return false;
+        }
+        return equalNodes(this, (TreeNode) obj);
+    }
+
+    public static boolean equalNodes(TreeNode p, TreeNode q) {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return equalNodes(p.left, q.left) && equalNodes(p.right, q.right);
+    }
 }
