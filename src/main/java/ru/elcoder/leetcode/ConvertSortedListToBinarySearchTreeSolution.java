@@ -12,27 +12,27 @@ import ru.elcoder.leetcode.models.TreeNode;
         url = "https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/"
 )
 public class ConvertSortedListToBinarySearchTreeSolution {
-public TreeNode sortedListToBST(ListNode head) {
-    return head == null ? null : newTreeNode(head, null);
-}
-
-private TreeNode newTreeNode(ListNode head, ListNode toExcl) {
-    ListNode mid = findMiddle(head, toExcl);
-    return new TreeNode(mid.val,
-            mid == head ? null : newTreeNode(head, mid),
-            mid.next == toExcl ? null : newTreeNode(mid.next, toExcl)
-    );
-}
-
-private ListNode findMiddle(ListNode head, ListNode toExcl) {
-    ListNode p = head;
-    while (p != toExcl && p != null && p.next != toExcl) {
-        head = head.next;
-        p = p.next;
-        if (p != null) {
-            p = p.next;
-        }
+    public TreeNode sortedListToBST(ListNode head) {
+        return head == null ? null : newTreeNode(head, null);
     }
-    return head;
-}
+
+    private TreeNode newTreeNode(ListNode head, ListNode toExcl) {
+        ListNode mid = findMiddle(head, toExcl);
+        return new TreeNode(mid.val,
+                mid == head ? null : newTreeNode(head, mid),
+                mid.next == toExcl ? null : newTreeNode(mid.next, toExcl)
+        );
+    }
+
+    private ListNode findMiddle(ListNode head, ListNode toExcl) {
+        ListNode p = head;
+        while (p != toExcl && p != null && p.next != toExcl) {
+            head = head.next;
+            p = p.next;
+            if (p != null) {
+                p = p.next;
+            }
+        }
+        return head;
+    }
 }
