@@ -16,8 +16,9 @@ public class PathSumSolution {
     }
 
     public boolean hasPathSumSubNode(TreeNode root, int targetSum) {
-        if (root == null)
-            return targetSum == 0;
-        return hasPathSumSubNode(root.left, targetSum - root.val) || hasPathSumSubNode(root.right, targetSum - root.val);
+        if (root.left == null && root.right == null)
+            return targetSum == root.val;
+        return root.left != null && hasPathSumSubNode(root.left, targetSum - root.val)
+                || root.right != null && hasPathSumSubNode(root.right, targetSum - root.val);
     }
 }

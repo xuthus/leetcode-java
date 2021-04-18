@@ -10,16 +10,22 @@ import static org.junit.Assert.fail;
 public class PathSumSolutionTest {
 
     @Test
-    public void notYetCompleted() {
-        fail("Not yet completed");
-    }
-
-    @Test
     public void hasPathSum0() {
         final PathSumSolution solution = new PathSumSolution();
         assertFalse(solution.hasPathSum(
                 null,
                 0
+        ));
+    }
+
+    @Test
+    public void hasPathSum10() {
+        final PathSumSolution solution = new PathSumSolution();
+        assertFalse(solution.hasPathSum(
+                new TreeNode(10,
+                        null,
+                        new TreeNode(15)),
+                10
         ));
     }
 
