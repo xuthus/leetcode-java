@@ -39,4 +39,9 @@ public class TreeNode {
             return false;
         return equalNodes(p.left, q.left) && equalNodes(p.right, q.right);
     }
+
+    @Override
+    public String toString() {
+        return val + " -> ...";
+    }
 }
