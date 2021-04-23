@@ -12,5 +12,6 @@ public class ContainerWithMostWaterSolutionTest {
         final ContainerWithMostWaterSolution solution = new ContainerWithMostWaterSolution();
         assertEquals(20, solution.maxArea(arrayOf(10, 3, 10)));
         assertEquals(49, solution.maxArea(arrayOf(1, 8, 6, 2, 5, 4, 8, 3, 7)));
+        assertEquals(2, solution.maxArea(arrayOf(1, 2, 1)));
     }
 }
