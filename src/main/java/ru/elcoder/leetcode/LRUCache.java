@@ -1,8 +1,5 @@
 package ru.elcoder.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class LRUCache {
 
     private static class Node {
@@ -24,12 +21,15 @@ public class LRUCache {
 
     private Node tail;
 
-    private final Map<Integer, Node> map = new HashMap<>();
+    private final Node[] map;
 
     private final int capacity;
 
+    private int size = 0;
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
+        map = new Node[3001];
     }
 
     public int get(int key) {
@@ -50,14 +50,15 @@ public class LRUCache {
             remove(node);
         }
         addFirst(node);
-        map.put(key, node);
-        if (map.size() > capacity) {
+        map[key] = node;
+        size++;
+        if (size > capacity) {
             removeLast();
         }
     }
 
     private Node find(int key) {
-        return map.get(key);
+        return map[key];
     }
 
     private void remove(Node node) {
@@ -86,15 +87,16 @@ public class LRUCache {
     private void removeLast() {
         if (this.tail == null)
             return;
-        if (map.size() == 1) {
+        if (size == 1) {
+            map[tail.key] = null;
             this.tail = null;
             this.head = null;
-            map.clear();
         } else {
-            map.remove(this.tail.key);
+            map[tail.key] = null;
             tail.prev.next = null;
             tail = tail.prev;
         }
+        size--;
     }
 
     public static void main(String[] args) {
