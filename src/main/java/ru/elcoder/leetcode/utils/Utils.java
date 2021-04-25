@@ -25,4 +25,7 @@ public class Utils {
         return sb.toString();
     }
 
+    public static int[] toIntArray(List<Integer> integers) {
+        return integers.stream().mapToInt(i -> i).toArray();
+    }
 }
