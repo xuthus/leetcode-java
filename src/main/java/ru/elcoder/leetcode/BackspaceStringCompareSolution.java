@@ -11,6 +11,7 @@ import ru.elcoder.leetcode.models.Leetcode;
 )
 public class BackspaceStringCompareSolution {
     public boolean backspaceCompare(String s, String t) {
+        // todo: implement
         return false;
     }
 }
