@@ -11,7 +11,24 @@ import ru.elcoder.leetcode.models.Leetcode;
 )
 public class BackspaceStringCompareSolution {
     public boolean backspaceCompare(String s, String t) {
-        // todo: implement
-        return false;
+        return compact(s).equals(compact(t));
+    }
+
+    private String compact(String s) {
+        int bs = 0;
+        char[] chars = s.toCharArray();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (chars[i] == '#')
+                bs++;
+            else if (bs > 0) {
+                chars[i] = '#';
+                bs--;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : chars)
+            if (c != '#')
+                sb.append(c);
+        return sb.toString();
     }
 }
