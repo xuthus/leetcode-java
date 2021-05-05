@@ -3,6 +3,10 @@ package ru.elcoder.leetcode;
 import ru.elcoder.leetcode.models.DifficultyLevel;
 import ru.elcoder.leetcode.models.Leetcode;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 @Leetcode(
         difficulty = DifficultyLevel.Medium,
         number = 253,
@@ -11,6 +15,15 @@ import ru.elcoder.leetcode.models.Leetcode;
 )
 public class MeetingRoomsIISolution {
     public int minMeetingRooms(int[][] intervals) {
-        return 0; // TODO: 5/4/2021 implement
+        PriorityQueue<Integer> q = new PriorityQueue<>();
+        q.add(Integer.MIN_VALUE);
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
+        for (int[] meet : intervals) {
+            Integer room = q.peek();
+            if (room <= meet[0])
+                q.poll();
+            q.add(meet[1]);
+        }
+        return q.size();
     }
 }
