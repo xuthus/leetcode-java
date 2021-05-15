@@ -3,9 +3,7 @@ package ru.elcoder.leetcode;
 import ru.elcoder.leetcode.models.DifficultyLevel;
 import ru.elcoder.leetcode.models.Leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Leetcode(
         difficulty = DifficultyLevel.Medium,
@@ -16,33 +14,34 @@ import java.util.List;
 public class CombinationSumSolution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
-        List<List<Integer>> list = new ArrayList<>();
-        findCombinations(candidates, target, list, 0);
-        return list;
+        return combinations(candidates, 0, target, new HashMap<>((target * candidates.length) << 4 ));
     }
 
-    private void findCombinations(int[] candidates, int goal, List<List<Integer>> list, int start) {
-        if (start >= candidates.length)
-            return;
-        for (int i = start; i < candidates.length; i++) {
-            int target = goal;
-            while (target > 0) {
-                if (candidates[i] == target) {
-                    list.add(Arrays.asList(target));
-                    break;
-                }
-                if (candidates[i] > target) {
-                    return;
-                }
-                target = target - candidates[i];
-                List<List<Integer>> sublist = new ArrayList<>();
-                findCombinations(candidates, target, sublist, start + 1);
-                for (List<Integer> ints : sublist) {
-                    List<Integer> res = new ArrayList<>(ints);
-                    res.add(candidates[i]);
-                    list.add(res);
-                }
-            }
+    private List<List<Integer>> combinations(int[] candidates, int pos, int target, Map<Integer, List<List<Integer>>> memo) {
+        if (pos >= candidates.length || target < candidates[pos])
+            return Collections.emptyList();
+        int key = (target << 10) + pos;
+        if (memo.containsKey(key)) {
+            return memo.get(key);
         }
+        LinkedList<List<Integer>> result = new LinkedList<>();
+        LinkedList<Integer> numbers = new LinkedList<>();
+        while (target > 0) {
+            List<List<Integer>> res = combinations(candidates, pos + 1, target, memo);
+            for (List<Integer> list : res) {
+                List<Integer> newList = new LinkedList<>(numbers);
+                newList.addAll(list);
+                result.add(newList);
+            }
+            target -= candidates[pos];
+            LinkedList<Integer> tmp = new LinkedList<>();
+            tmp.add(candidates[pos]);
+            tmp.addAll(numbers);
+            numbers = tmp;
+        }
+        if (target == 0)
+            result.add(numbers);
+        memo.put(key, result);
+        return result;
     }
 }
