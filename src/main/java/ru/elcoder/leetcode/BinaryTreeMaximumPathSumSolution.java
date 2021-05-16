@@ -5,7 +5,7 @@ import ru.elcoder.leetcode.models.Leetcode;
 import ru.elcoder.leetcode.models.TreeNode;
 
 @Leetcode(
-        difficulty = DifficultyLevel.Medium,
+        difficulty = DifficultyLevel.Hard,
         number = 124,
         title = "Binary Tree Maximum Path Sum",
         url = "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
