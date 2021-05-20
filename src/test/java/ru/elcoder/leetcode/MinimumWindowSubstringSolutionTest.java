@@ -1,6 +1,8 @@
 package ru.elcoder.leetcode;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import ru.elcoder.leetcode.utils.Utils;
 
 import static org.junit.Assert.*;
 
@@ -16,6 +18,13 @@ public class MinimumWindowSubstringSolutionTest {
     public void minWindow2() {
         final MinimumWindowSubstringSolution solution = new MinimumWindowSubstringSolution();
         assertEquals("BANC", solution.minWindow("ADOBECODEBANC", "ABC"));
+    }
+
+    @Test
+    public void minWindowLong() {
+        final MinimumWindowSubstringSolution solution = new MinimumWindowSubstringSolution();
+        String[] strings = Utils.readStringFromResources("minimum-window-substring-long.txt").split("\r\n");
+        assertEquals(strings[2], solution.minWindow(strings[0], strings[1]));
     }
 
     @Test

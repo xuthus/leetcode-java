@@ -15,37 +15,31 @@ import java.util.Map;
 public class MinimumWindowSubstringSolution {
 
     public String minWindow(String s, String t) {
-        Map<Character, Integer> target = new HashMap<>();
-        for (char c : t.toCharArray()) {
-//            target.put(c, target.getOrDefault(c, 0) + 1);
-            target.merge(c, 1, Integer::sum);
-        }
-        Map<Character, Integer> cover = new HashMap<>(target);
-        int i = 0, j = -1, p1 = -1, p2 = -1, min = Integer.MAX_VALUE;
+        int[] target = new int[255];
+        for (char c : t.toCharArray())
+            target[c]++;
+        int i = 0, j = 0, p1 = -1, p2 = -1, min = Integer.MAX_VALUE;
+        Map<Character, Integer> cover = new HashMap<>();
+        cover.put(s.charAt(i), 1);
         while (j < s.length() && i < s.length()) {
-            while (j < s.length() && !covers(cover)) {
+            while (!covers(cover, i, j, target, t.length(), s.length())) {
                 j++;
                 if (j >= s.length())
                     break;
-                char c = s.charAt(j);
-                final Integer count = cover.get(c);
-                if (count == null)
-                    continue;
-                if (count == 1)
-                    cover.remove(c);
-                else
-                    cover.put(c, count - 1);
+                cover.merge(s.charAt(j), 1, Integer::sum);
             }
-            while (i <= j && covers(cover)) {
+            while (covers(cover, i, j, target, t.length(), s.length())) {
                 i++;
                 if (i >= s.length())
                     break;
-                char c = s.charAt(i - 1);
-                if (!target.containsKey(c))
-                    continue;
-                cover.merge(c, 1, Integer::sum);
+                final char key = s.charAt(i - 1);
+                final Integer count = cover.get(key);
+                if (count == 1)
+                    cover.remove(key);
+                else
+                    cover.put(key, count - 1);
             }
-            if (i > j)
+            if (j >= s.length())
                 break;
             if (min > (j - i + 2)) {
                 p1 = i - 1;
@@ -56,8 +50,19 @@ public class MinimumWindowSubstringSolution {
         return p1 == -1 ? "" : s.substring(p1, p2);
     }
 
-    private boolean covers(Map<Character, Integer> cover) {
-        return cover.size() == 0;
+    private boolean covers(Map<Character, Integer> cover, int i, int j, int[] target, int minLength, int sourceLength) {
+        if (j >= sourceLength || i >= sourceLength)
+            return false;
+        if ((j - i + 1) < minLength)
+            return false;
+        for (char c = 0; c < target.length; c++) {
+            if (target[c] == 0)
+                continue;
+            final Integer count = cover.get(c);
+            if (count == null || count < target[c])
+                return false;
+        }
+        return true;
     }
 
 }
