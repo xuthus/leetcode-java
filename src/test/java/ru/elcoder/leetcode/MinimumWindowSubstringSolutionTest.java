@@ -23,7 +23,7 @@ public class MinimumWindowSubstringSolutionTest {
     @Test
     public void minWindowLong() {
         final MinimumWindowSubstringSolution solution = new MinimumWindowSubstringSolution();
-        String[] strings = Utils.readStringFromResources("minimum-window-substring-long.txt").split("\r\n");
+        String[] strings = Utils.readStringFromResources("minimum-window-substring-long.txt").split("\n");
         assertEquals(strings[2], solution.minWindow(strings[0], strings[1]));
     }
 
