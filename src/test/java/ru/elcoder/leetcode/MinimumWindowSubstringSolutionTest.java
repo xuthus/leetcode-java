@@ -20,6 +20,7 @@ public class MinimumWindowSubstringSolutionTest {
         assertEquals("BANC", solution.minWindow("ADOBECODEBANC", "ABC"));
     }
 
+    @Ignore
     @Test
     public void minWindowLong() {
         final MinimumWindowSubstringSolution solution = new MinimumWindowSubstringSolution();
