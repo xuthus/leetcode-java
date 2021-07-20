@@ -29,32 +29,52 @@ public class ThreeEqualPartsSolution {
         }
         if (cnt1 % 3 != 0)
             return WRONG;
-        int cnt = cnt1 / 3, pos3 = -1, right0 = -1;
+        int cnt = cnt1 / 3, pos2 = -1, right0 = -1;
         for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] == 1) {
                 if (right0 == -1)
                     right0 = arr.length - 1 - i;
                 cnt--;
                 if (cnt == 0) {
-                    pos3 = i;  // start of most left 1's of 3rd number. There are may be 0's at left.
+                    pos2 = i;  // start of most left 1's of 3rd number. There are may be 0's at left.
                     break;
                 }
             }
         }
         // find most right 1's of 2nd number
-        int pos4 = -1;
-        for (int i = pos3 - 1; i >= 0; i--) {
+        int pos3 = -1;
+        for (int i = pos2 - 1; i >= 0; i--) {
             if (arr[i] == 1) {
-                if (right0 == -1)
-                    right0 = arr.length - 1 - i;
+                pos3 = i;
+                break;
+            }
+        }
+        // find most left 1's of 2nd number
+        int pos4 = -1;
+        cnt = cnt1 / 3;
+        for (int i = pos3; i >= 0; i--) {
+            if (arr[i] == 1) {
                 cnt--;
                 if (cnt == 0) {
-                    pos3 = i;  // start of most left 1's of 3rd number. There are may be 0's at left.
+                    pos4 = i;
                     break;
                 }
             }
         }
-
-        throw new UnsupportedOperationException("todo");
+        // find most right 1's of 1st number
+        int pos5 = -1;
+        for (int i = pos4 - 1; i >= 0; i--) {
+            if (arr[i] == 1) {
+                pos5 = i;
+                break;
+            }
+        }
+        // p5 - p4 >= right0s
+        if ((pos4 - pos5 - 1) < right0)
+            return WRONG;
+        // p3 - p2 >= right0s
+        if ((pos2 - pos3 - 1) < right0)
+            return WRONG;
+        return new int[]{pos4 - (pos4 - pos5 - right0 - 1) - 1, pos2 - (pos2 - pos3 - right0 - 1)};
     }
 }
