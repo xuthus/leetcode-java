@@ -77,6 +77,26 @@ public class ThreeEqualPartsSolution {
         // p3 - p2 >= right0s
         if ((pos2 - pos3 - 1) < right0)
             return WRONG;
-        return new int[]{pos4 - (pos4 - pos5 - right0 - 1) - 1, pos2 - (pos2 - pos3 - right0 - 1)};
+        final int endOf1st = pos4 - (pos4 - pos5 - right0 - 1) - 1;
+        final int beginOf3rd = pos2 - (pos2 - pos3 - right0 - 1);
+        if (!sameNumbers(arr, 0, endOf1st, endOf1st + 1, beginOf3rd - 1)) {
+            return WRONG;
+        }
+        if (!sameNumbers(arr, endOf1st + 1, beginOf3rd - 1, beginOf3rd, arr.length - 1)) {
+            return WRONG;
+        }
+        return new int[]{endOf1st, beginOf3rd};
+    }
+
+    private boolean sameNumbers(int[] arr, int from1, int to1, int from2, int to2) {
+        int p1 = to1;
+        int p2 = to2;
+        while (p1 >= from1 && p2 >= from2) {
+            if (arr[p1] != arr[p2])
+                return false;
+            p1--;
+            p2--;
+        }
+        return true;
     }
 }
