@@ -64,6 +64,12 @@ public class ThreeEqualPartsSolutionTest {
     @Test
     public void threeEqualParts10() {
         final ThreeEqualPartsSolution solution = new ThreeEqualPartsSolution();
-        assertArrayEquals(arrayOf(0, 4), solution.threeEqualParts(arrayOf(0,0,0,0,0)));
+        assertArrayEquals(arrayOf(0, 4), solution.threeEqualParts(arrayOf(0, 0, 0, 0, 0)));
+    }
+
+    @Test
+    public void threeEqualParts11() {
+        final ThreeEqualPartsSolution solution = new ThreeEqualPartsSolution();
+        assertArrayEquals(arrayOf(-1, -1), solution.threeEqualParts(arrayOf(1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1)));
     }
 }

@@ -27,6 +27,8 @@ public class ThreeEqualPartsSolution {
             if (arr[i] == 1)
                 cnt1++;
         }
+        if (cnt1 == 0)
+            return new int[] {0, arr.length - 1};
         if (cnt1 % 3 != 0)
             return WRONG;
         int cnt = cnt1 / 3, pos2 = -1, right0 = -1;
