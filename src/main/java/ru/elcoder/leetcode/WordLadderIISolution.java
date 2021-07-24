@@ -28,7 +28,6 @@ public class WordLadderIISolution {
         path.push(word);
         used.add(word);
         if (shortestPath.getOrDefault(word, Integer.MAX_VALUE) >= path.size() && (res.isEmpty() || path.size() <= res.get(0).size())) {
-            shortestPath.put(word, path.size());
             if (word.equals(endWord)) {
                 if (!res.isEmpty() && path.size() < res.get(0).size()) {
                     res.clear();
