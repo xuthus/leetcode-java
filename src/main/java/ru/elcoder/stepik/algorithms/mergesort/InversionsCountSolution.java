@@ -20,42 +20,45 @@ public class InversionsCountSolution {
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
-        int count = mergeSort(array, 0, n - 1);
+        long count = mergeSort(array, 0, n - 1);
         System.out.println(count);
     }
 
-    public static int mergeSort(int[] array, int l, int r) {
+    public static long mergeSort(int[] array, int l, int r) {
         if (r == l) {
-            return 0;
+            return 0L;
         }
         if (r - l == 1) {
             if (array[r] >= array[l]) {
-                return 0;
+                return 0L;
             }
             swap(array, r, l);
-            return 1;
+            return 1L;
         }
         int m = (l + r) >> 1;
-        int res = 0;
+        long res = 0;
         res += mergeSort(array, l, m);
         res += mergeSort(array, m + 1, r);
         res += merge(array, l, m, m + 1, r);
         return res;
     }
 
-    public static int merge(int[] array, int l1, int r1, int l2, int r2) {
-        int count = 0;
+    public static long merge(int[] array, int l1, int r1, int l2, int r2) {
+        long count = 0;
         int saveL1 = l1;
         int[] dest = new int[r1 - l1 + 1 + r2 - l2 + 1];
         int i = 0;
         while (l1 <= r1 || l2 <= r2) {
-            int top1 = l1 <= r1 ? array[l1++] : Integer.MAX_VALUE;
-            int top2 = l2 <= r2 ? array[l2++] : Integer.MAX_VALUE;
-            if (top1 < top2) {
+            int top1 = l1 <= r1 ? array[l1] : Integer.MAX_VALUE;
+            int top2 = l2 <= r2 ? array[l2] : Integer.MAX_VALUE;
+            if (top1 <= top2) {
                 dest[i++] = top1;
+                l1++;
             } else {
                 dest[i++] = top2;
-                count++;
+                l2++;
+                if (l1 <= r1)
+                    count += (r1 - l1 + 1);
             }
         }
         System.arraycopy(dest, 0, array, saveL1, dest.length);
