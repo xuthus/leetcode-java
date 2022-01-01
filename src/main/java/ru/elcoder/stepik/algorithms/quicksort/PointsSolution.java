@@ -27,22 +27,12 @@ public class PointsSolution {
     }
 
     public static int owningAreasCount(int point, Area[] areasFrom, Area[] areasTo) {
-        int finished = searchFinishedNaive(point, areasTo);
+        int finished = searchFinishedQuick(point, areasTo);
         int started = searchStartedQuick(point, areasFrom);
         if (finished == -1 || started == -1) {
             return 0;
         }
         return started - finished;
-    }
-
-    public static int searchStartedNaive(int point, Area[] areas) {
-        // naive scan
-        for (int i = 0; i < areas.length; i++) {
-            if (areas[i].from > point) {
-                return i;
-            }
-        }
-        return areas.length;
     }
 
     public static int searchStartedQuick(int point, Area[] areas) {
@@ -65,34 +55,24 @@ public class PointsSolution {
         return (areas[l].from > point) ? l : l + 1;
     }
 
-    public static int searchFinishedNaive(int point, Area[] areas) {
-        // naive scan
-        for (int i = areas.length - 1; i >= 0; i--) {
-            if (areas[i].to < point) {
-                return i + 1;
-            }
-        }
-        return 0;
-    }
-
     public static int searchFinishedQuick(int point, Area[] areas) {
         int l = 0;
         int r = areas.length - 1;
         if (areas[r].to < point) {
             return r + 1;
         }
-        if (areas[l].to > point) {
+        if (areas[l].to >= point) {
             return 0;
         }
         while (l < r) {
             int m = (l + r) >> 1;
-            if (areas[m].to > point) {
+            if (areas[m].to >= point) {
                 r = m - 1;
             } else {
                 l = m + 1;
             }
         }
-        return (areas[l].to > point) ? l : l + 1;
+        return areas[l].to >= point ? l : l + 1;
     }
 
     static class Area {
