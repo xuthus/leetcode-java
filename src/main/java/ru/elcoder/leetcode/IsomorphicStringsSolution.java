@@ -3,6 +3,8 @@ package ru.elcoder.leetcode;
 import ru.elcoder.leetcode.models.DifficultyLevel;
 import ru.elcoder.leetcode.models.Leetcode;
 
+import java.util.Optional;
+
 @Leetcode(
         difficulty = DifficultyLevel.Easy,
         number = 205,
