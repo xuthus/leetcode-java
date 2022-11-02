@@ -1,9 +1,13 @@
 package ru.elcoder.leetcode.utils;
 
+import ru.elcoder.leetcode.models.TreeNode;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Utils {
 
@@ -45,5 +49,34 @@ public class Utils {
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+    }
+
+    /**
+     * converts pre-order traversed array to a binary tree
+     * @param ints array of nullable ints
+     * @return TreeNode
+     */
+    public static TreeNode arrayToTreeNode(Integer... ints) {
+        TreeNode root = new TreeNode(ints[0]);
+        Queue<TreeNode> nodes = new LinkedList<>(Arrays.asList(root));
+        int i = 1;
+        while (!nodes.isEmpty()) {
+            TreeNode node = nodes.poll();
+            if (i < ints.length) {
+                Integer val = ints[i++];
+                if (val != null) {
+                    node.left = new TreeNode(val);
+                    nodes.offer(node.left);
+                }
+            }
+            if (i < ints.length) {
+                Integer val = ints[i++];
+                if (val != null) {
+                    node.right = new TreeNode(val);
+                    nodes.offer(node.right);
+                }
+            }
+        }
+        return root;
     }
 }
