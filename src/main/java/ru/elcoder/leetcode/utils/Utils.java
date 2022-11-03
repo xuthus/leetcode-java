@@ -53,10 +53,14 @@ public class Utils {
 
     /**
      * converts pre-order traversed array to a binary tree
+     *
      * @param ints array of nullable ints
      * @return TreeNode
      */
     public static TreeNode arrayToTreeNode(Integer... ints) {
+        if (ints == null || ints.length == 0) {
+            return null;
+        }
         TreeNode root = new TreeNode(ints[0]);
         Queue<TreeNode> nodes = new LinkedList<>(Arrays.asList(root));
         int i = 1;
