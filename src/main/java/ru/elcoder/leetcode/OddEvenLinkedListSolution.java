@@ -41,9 +41,6 @@ public class OddEvenLinkedListSolution {
             oddity = !oddity;
             head = head.next;
         }
-        if (odd == null) {
-            return startEven;
-        }
         odd.next = startEven;
         return startOdd;
     }
