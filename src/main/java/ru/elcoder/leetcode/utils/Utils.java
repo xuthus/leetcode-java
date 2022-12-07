@@ -57,6 +57,7 @@ public class Utils {
      * @param ints array of nullable ints
      * @return TreeNode
      */
+    // todo: move to static factory method `TreeNode.fromArray(...)`
     public static TreeNode arrayToTreeNode(Integer... ints) {
         if (ints == null || ints.length == 0) {
             return null;
