@@ -1,8 +1,17 @@
 package ru.elcoder.leetcode;
 
+import ru.elcoder.leetcode.models.DifficultyLevel;
+import ru.elcoder.leetcode.models.Leetcode;
+
 /**
  * Created by xuthus on 17.05.2017.
  */
+@Leetcode(
+        difficulty = DifficultyLevel.Easy,
+        number = 258,
+        title = "Add Digits",
+        url = "https://leetcode.com/problems/add-digits/"
+)
 public class AddDigitsSolution {
     /*
     Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
