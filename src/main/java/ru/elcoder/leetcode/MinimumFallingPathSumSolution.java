@@ -10,7 +10,7 @@ import java.util.Map;
         difficulty = DifficultyLevel.Medium,
         number = 931,
         title = "Minimum Falling Path Sum",
-        url = "https://leetcode.com/problems/minimum-falling-path-sum/description/"
+        url = "https://leetcode.com/problems/minimum-falling-path-sum/"
 )
 public class MinimumFallingPathSumSolution {
     /*

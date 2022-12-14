@@ -8,7 +8,7 @@ import ru.elcoder.leetcode.models.ListNode;
         difficulty = DifficultyLevel.Easy,
         number = 876,
         title = "Middle of the Linked List",
-        url = "https://leetcode.com/problems/middle-of-the-linked-list/description/"
+        url = "https://leetcode.com/problems/middle-of-the-linked-list/"
 )
 public class MiddleOfTheLinkedListSolution {
     public ListNode middleNode(ListNode head) {

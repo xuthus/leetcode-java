@@ -8,7 +8,7 @@ import ru.elcoder.leetcode.models.ListNode;
         difficulty = DifficultyLevel.Medium,
         number = 328,
         title = "Odd Even Linked List",
-        url = "https://leetcode.com/problems/odd-even-linked-list/description/"
+        url = "https://leetcode.com/problems/odd-even-linked-list/"
 )
 public class OddEvenLinkedListSolution {
     public ListNode oddEvenList(ListNode head) {
